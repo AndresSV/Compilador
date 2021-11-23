@@ -1,4 +1,4 @@
-  # ----------------------------------------------------------------------
+# ----------------------------------------------------------------------
 # lexer.py
 # A lexer for C.
 # Este lexer esta basado fuertemente en el ejemplo otorgado por la
@@ -8,7 +8,6 @@
 import sys
 sys.path.insert(0, "../..")
 
-import yacc as yacc
 import lex as lex
 
 #Reserved words
