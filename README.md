@@ -8,9 +8,10 @@
 4. [Requisitos](#Requisitos)
     1. [Operaciones Permitidas](#Operaciones-Permitidas)
         1. Aritméticas
-        2. Booleanas
-        3. Operaciones de bloques
-        4. Un sistema de tipos
+        2. Comparación
+        3. Booleanas
+        4. Operaciones de bloques
+        5. Un sistema de tipos
     2. [Operaciones permitidas entre el sistema de tipos](#Operaciones-permitidas-entre-el-sistema-de-tipos)
     3. [Flujos de control existentes](#Flujos-de-control-existentes)
     4. [Código de tres direcciones](#Código-de-tres-direcciones)
@@ -43,7 +44,7 @@ Como proyecto final crearemos un pequeño compilador, para un lenguaje que cuent
     - Multiplicación *
     - División /
     - Exponenciación ^
-    - Comparación:
+- **Comparación**
     - ==
     - != 
     - \>
