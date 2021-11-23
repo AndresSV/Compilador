@@ -13,13 +13,13 @@ import lex as lex
 
 #Reserved words
 reserved = (
-    'AND', 'BOOLEAN', 'ELIF', 'ELSE', 'FALSE', 'FLOAT', 'FOR', 'IF', 'INT', 
-    'OR', 'PRINT', 'STRING', 'TRUE', 'WHILE',
+    'BOOLEAN', 'ELIF', 'ELSE', 'FALSE', 'FLOAT', 'FOR', 'IF', 'INT', 
+    'PRINT', 'STRING', 'TRUE', 'WHILE',
 )
 
 tokens = reserved + (
     # Literals (identifier, integer constant, float constant, string constant)
-    'ID', 'TYPEID', 'ICONST', 'FCONST', 'SCONST',
+    'ID', 'ICONST', 'FCONST', 'SCONST',
 
     # Operators (+, -, *, /, ^, |, &, <, <=, >, >=, ==, !=)
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'POWER',
@@ -34,6 +34,16 @@ tokens = reserved + (
     'LBRACE', 'RBRACE',
     'SEMI',
 )
+
+# Completely ignored characters
+t_ignore = ' \t\x0c'
+
+# Newlines
+
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
+
 
 # Operators
 t_PLUS             = r'\+'
@@ -52,7 +62,7 @@ t_NE               = r'!='
 
 # Assignment operators
 
-t_EQUALS = r'='
+t_ASSIGN = r'='
 
 # Delimeters
 t_LPAREN = r'\('
@@ -64,7 +74,7 @@ t_SEMI = r';'
 # Identifiers
 
 # Type Tokens
-def t_NAME(t):
+def t_ID(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
     t.type = reserved.get(t.value, 'NAME')
     return t
@@ -89,18 +99,8 @@ def t_STRVAL(t):
     r'\"([^\\\n]|(\\.))*?\"'
     return t
 
-# Newlines
-
-def t_newline(t):
-    r'\n+'
-    t.lexer.lineno += len(t.value)
-
-
 def t_error(t):
     print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
 
-
 lex.lex()
-
-
