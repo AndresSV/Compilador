@@ -7,6 +7,8 @@
 
 import ply.yacc as yacc
 import lexer
+import tac
+from tac import threeAddressCode
 from lexer import tokens
 
 import sys
@@ -200,8 +202,15 @@ def main():
         f.close()
         yacc.parse(r)
         w = open('AST.txt','w')
-        for inst in abstractTree:
-            w.write(str(inst)+'\n')
+        for node in abstractTree:
+            w.write(str(node)+'\n')
+        
+        try:
+            for i in abstractTree:
+                tac.threeAddressCode(node)
+        except:
+            print ("Error trying to compile Three Address Code")
+
         w.close()
 
     else:

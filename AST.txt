@@ -9,5 +9,3 @@
 ('print', '"pato pez"')
 ('declare_assign', 'boolean', 'd', False)
 ('declare_assign', 'boolean', 'e', True)
-('conditional', ('if', ('operation', 'a', '&', 'b'), (('print', 'c'),)), (), ('else', (('declare', 'int', 'e'),)))
-('for', ('declare_assign', 'int', 'i', 0), ('operation', 'i', '<', 10), ('assign', 'i', ('operation', 'i', '+', 1)), (('print', 'i'),))
