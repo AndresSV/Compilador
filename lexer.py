@@ -8,19 +8,20 @@
 import sys
 sys.path.insert(0, "../..")
 
-import lex as lex
+import ply.lex as lex
 
 #Reserved words
-reserved = (
-    'BOOLEAN', 'ELIF', 'ELSE', 'FALSE', 'FLOAT', 'FOR', 'IF', 'INT', 
-    'PRINT', 'STRING', 'TRUE', 'WHILE',
-)
+reserved = {
+    'boolean': 'BOOLEAN', 'elif':'ELIF', 'else':'ELSE', 'false':'FALSE', 
+    'float':'FLOAT', 'for':'FOR', 'if':'IF', 'int':'INT', 'print':'PRINT', 
+    'string':'STRING', 'true':'TRUE', 'while':'WHILE',
+}
 
-tokens = reserved + (
+tokens = tuple(reserved.values()) + (
     # Literals (identifier, integer constant, float constant, string constant)
     'ID', 'ICONST', 'FCONST', 'SCONST',
 
-    # Operators (+, -, *, /, ^, |, &, <, <=, >, >=, ==, !=)
+    # Operators (+, -, *, /, ^, <, <=, >, >=, ==, !=)
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'POWER',
     'OR', 'AND', 
     'LT', 'LE', 'GT', 'GE', 'EQ', 'NE',
@@ -61,14 +62,14 @@ t_NE               = r'!='
 
 # Assignment operators
 
-t_ASSIGN = r'='
+t_ASSIGN            = r'='
 
 # Delimeters
-t_LPAREN = r'\('
-t_RPAREN = r'\)'
-t_LBRACE = r'\{'
-t_RBRACE = r'\}'
-t_SEMI = r';'
+t_LPAREN            = r'\('
+t_RPAREN            = r'\)'
+t_LBRACE            = r'\{'
+t_RBRACE            = r'\}'
+t_SEMI              = r';'
 
 # Identifiers
 
@@ -80,21 +81,21 @@ def t_ID(t):
 
 # Floating literal
 
-def t_FLOATVAL(t):
+def t_FNUMBER(t):
     r'\d+\.\d+'
     t.value = float(t.value)
     return t
 
 # Integer literal
 
-def t_INTVAL(t):
+def t_INUMBER(t):
     r'\d+'
     t.value = int(t.value)
     return t
 
 # String literal
 
-def t_STRVAL(t):
+def t_STRING(t):
     r'\"([^\\\n]|(\\.))*?\"'
     return t
 
