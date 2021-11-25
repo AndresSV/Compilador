@@ -470,7 +470,7 @@ class LRParser:
 
                     if debug:
                         debug.info('Done   : Returning %s', format_result(result))
-                        debug.info('PLY: PARSE DEBUG END')
+                        debug.info('PLY: PARSE DEBUG SEMI')
 
                     return result
 

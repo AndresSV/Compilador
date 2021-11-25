@@ -76,26 +76,26 @@ t_SEMI              = r';'
 # Type Tokens
 def t_ID(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
-    t.type = reserved.get(t.value, 'NAME')
+    t.type = reserved.get(t.value, 'ID')
     return t
 
 # Floating literal
 
-def t_FNUMBER(t):
+def t_FCONST(t):
     r'\d+\.\d+'
     t.value = float(t.value)
     return t
 
 # Integer literal
 
-def t_INUMBER(t):
+def t_ICONST(t):
     r'\d+'
     t.value = int(t.value)
     return t
 
 # String literal
 
-def t_STRING(t):
+def t_SCONST(t):
     r'\"([^\\\n]|(\\.))*?\"'
     return t
 
