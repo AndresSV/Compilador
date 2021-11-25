@@ -199,10 +199,10 @@ def main():
         r = f.read()
         f.close()
         yacc.parse(r)
-        print('==== Tree ====')
+        w = open('AST.txt','w')
         for inst in abstractTree:
-            print(inst)
-
+            w.write(str(inst)+'\n')
+        w.close()
 
     else:
         print(args.filename)
