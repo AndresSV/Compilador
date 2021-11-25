@@ -206,7 +206,7 @@ def main():
             w.write(str(node)+'\n')
         
         try:
-            for i in abstractTree:
+            for node in abstractTree:
                 tac.threeAddressCode(node)
         except:
             print ("Error trying to compile Three Address Code")

@@ -1,22 +1,16 @@
-boolean e
-e=True
-boolean e
-e=True
-boolean e
-e=True
-boolean e
-e=True
-boolean e
-e=True
-boolean e
-e=True
-boolean e
-e=True
-boolean e
-e=True
-boolean e
-e=True
-boolean e
-e=True
+int a
+float b
+b=10
+a=1
+T0=a + 3
+a=T0
+print 10
+print a
+string c
+c="pato pez"
+print c
+print "pato pez"
+boolean d
+d=False
 boolean e
 e=True

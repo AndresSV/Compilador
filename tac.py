@@ -131,4 +131,3 @@ def threeAddressCode(abstractSyntaxTree):
             threeAddressCode(stmt)
         w.write("go to" + " " + str(loopL) + "\n")
         w.write("label" + " " + str(endL) + "\n")
-    
